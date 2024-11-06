@@ -1,15 +1,13 @@
-import { ReportHandler } from 'web-vitals';
+import { onCLS, onFCP, onINP, onLCP, onTTFB } from 'web-vitals';
 
-const reportWebVitals = (onPerfEntry?: ReportHandler) => {
-  if (onPerfEntry && onPerfEntry instanceof Function) {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
-    });
+export default function reportWebVitals(fn?: (params: any) => void) {
+  if (process.env.NODE_ENV === 'production' || !fn) {
+    return;
   }
-};
 
-export default reportWebVitals;
+  onCLS(fn);
+  onFCP(fn);
+  onINP(fn);
+  onLCP(fn);
+  onTTFB(fn);
+}
