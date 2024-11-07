@@ -48,3 +48,10 @@ You will be creating a basic todo list, with the following functionality.
 
 I changed the bundler to vite, since react-scripts is abandoned and even the latest version has many bugs. I also upgraded the dependencies to the latest versions.
 
+### Setup
+
+```bash
+npm install
+npm start
+```
+
